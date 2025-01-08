@@ -11,7 +11,7 @@
 				align-items: center;
 				min-height: 100vh;
 				margin: 0;
-				background-color: #f0f0f0;
+				background-color:rgb(21, 21, 21);
 			}
 			#grid {
 				display: grid;
@@ -34,7 +34,7 @@
 			const colorSequence = urlParams.get('colors') || '';
 
 			// Initialisation des couleurs.
-			const colorMap = ['black', 'red', 'blue', 'lightgray'];
+			const colorMap = ['black', 'red', 'blue', 'white'];
 			const grid = document.getElementById('grid');
 			grid.style.gridTemplateColumns = `repeat(${w}, 1fr)`;
 			

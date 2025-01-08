@@ -1,31 +1,51 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Grille de Couleurs</title>
-  <style>
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      margin: 0;
-      background-color: #f0f0f0;
-    }
-    #grid {
-      display: grid;
-      gap: 5px;
-    }
-    .cell {
-      width: 50px;
-      height: 50px;
-    }
-  </style>
-</head>
-<body>
-  <div id="grid"></div>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Type des Cartes</title>
+		<style>
+			body {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				min-height: 100vh;
+				margin: 0;
+				background-color: #f0f0f0;
+			}
+			#grid {
+				display: grid;
+				gap: 5px;
+			}
+			.cell {
+				width: 50px;
+				height: 50px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="grid"></div>
+		<script>
 
+			// Récupération des informations de l'url.
+			const urlParams = new URLSearchParams(window.location.search);
+			const w = parseInt(urlParams.get('w')) || 5;
+			const h = parseInt(urlParams.get('h')) || 5;
+			const colorSequence = urlParams.get('colors') || '';
 
-</body>
+			// Initialisation des couleurs.
+			const colorMap = ['black', 'red', 'blue', 'lightgray'];
+			const grid = document.getElementById('grid');
+			grid.style.gridTemplateColumns = `repeat(${w}, 1fr)`;
+			
+			// Remplissage de la grille.
+			for (let i = 0; i < w * h; i++) {
+				const cell = document.createElement('div');
+				const colorIndex = parseInt(colorSequence[i]) || 0;
+				cell.className = 'cell';
+				cell.style.backgroundColor = colorMap[colorIndex] || 'white';
+				grid.appendChild(cell);
+			}
+		</script>
+	</body>
 </html>

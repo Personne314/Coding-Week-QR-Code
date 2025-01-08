@@ -26,22 +26,6 @@
 <body>
   <div id="grid"></div>
 
-  <script>
-    const urlParams = new URLSearchParams(window.location.search);
-    const size = parseInt(urlParams.get('size')) || 5; // Taille de la grille (par défaut 5)
-    const colors = (urlParams.get('colors') || '0,1,2,3').split(',').map(Number); // Couleurs
 
-    const colorMap = ['black', 'red', 'blue', 'lightgray'];
-    const grid = document.getElementById('grid');
-    grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
-
-    for (let i = 0; i < size * size; i++) {
-      const cell = document.createElement('div');
-      const colorIndex = colors[i % colors.length];
-      cell.className = 'cell';
-      cell.style.backgroundColor = colorMap[colorIndex] || 'white'; // Défaut: blanc
-      grid.appendChild(cell);
-    }
-  </script>
 </body>
 </html>
